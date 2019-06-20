@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Bootstrap -->
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+<link href="materialize/style/style.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- imports e imagens -->
+<link rel="shortcut icon" href="materialize/imagens/USJT.png"
+	type="image/x-icon">
+<title>Projeto Integrado</title>
+</head>
+
+<body>
+	<div class="divMenu row">
+		<div class="col-md-1">
+			<img src="materialize/imagens/USJT.png">
+		</div>
+
+		<div class="col-md-9">
+			<div class="menuDropdown">
+				<div class="menuDrop" style="top: -7px;">
+					<a href="/confeccao" id="linkMenu">Confecção</a>
+					<a href="/inicial" id="linkMenu">Live</a> 
+					<a href="/upload" id="linkMenu">Uploads</a>
+					<a href="/opcoes" id="linkMenu">Opções</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="col-md-3">
+				<form name="sair" th:action="@{/logof}" method="post">
+					<div class="divAtendimento">
+						<a href="/inicial" id="linkEntrar" th:text="${usuario.nome}"></a>
+						 | 
+						<a href="javascript:sair.submit()" id="linkEntrar" th:text="#{Sair}"></a>
+					</div>
+				</form>
+				<div class="divPesquisar">
+					<img src="materialize/imagens/search.png" id="imgBuscar"> 
+					<input type="text" id="txtBuscar" placeholder="Buscar...">
+					<button type="button" name="button" id="btnBuscar" style="margin-top: 0px;">Buscar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<h1 th:text="#{PRINCIPAISNOTICIASDODIA}"></h1>
+
+	<div class="container">
+
+		<div class="divNoticia" th:each="conteudos : ${conteudos}">
+			<div th:if="${conteudos.usuario} eq ${usuario}">
+				<div class="row">
+					<div class="col-md-1">
+						<img id="icone" src="materialize/imagens/user.png">
+					</div>
+					<div class="col-md-11">
+						<div class="titulo" th:if="${conteudos.figura}">
+							<p id="titulo" th:text="${conteudos.usuario.nome} +'&nbsp;&nbsp; publicou &nbsp;&nbsp;'+ ${conteudos.figura.nome}"></p>					
+						</div>
+						<div class="titulo" th:if="${conteudos.audio}">
+							<p id="titulo" th:text="${conteudos.usuario.nome} +'&nbsp;&nbsp; publicou &nbsp;&nbsp;'+ ${conteudos.audio.nome}"></p>					
+						</div>
+						<div class="titulo" th:if="${conteudos.video}">
+							<p id="titulo" th:text="${conteudos.usuario.nome} +'&nbsp;&nbsp; publicou &nbsp;&nbsp;'+ ${conteudos.video.nome}"></p>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="descricao2">
+					<div id="descricao" th:utext="${conteudos.descricao}"></div>
+				</div>
+				<div class="row">
+					<img class="imgNoticias" th:if="${conteudos.figura}" th:src="${conteudos.figura.caminho}">
+					
+					<video class="imgNoticias" controls th:if="${conteudos.video}">
+						<source th:src="${conteudos.video.caminho}">
+					</video>
+					
+					<audio class="imgNoticias" style="width: 900px; height: 50px;" controls="controls" th:if="${conteudos.audio}">
+						<source th:src="${conteudos.audio.caminho}" type="audio/mpeg" />
+					</audio>
+				</div>
+				
+				<div class="row">
+					<form class="form" id="curtidasForm" action="curtidas" method="post">
+						<div class="like">
+								<span th:text="${conteudos.curtidas}" style="position:relative;font-size:30px;bottom:-8px"></span>
+								<button type="submit" name="curtidas" id="linkMenu" th:value="'like:'+${conteudos.id_material}" 
+									style="border-radius: 50%; padding: 0px;">
+									<img id="like" src="materialize/imagens/like2.png">
+								</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span id="spanDislike" th:text="${conteudos.naocurtidas}" style="position:relative;font-size:30px;bottom:-8px"></span>
+								<button type="submit" name="curtidas" id="linkMenu" th:value="'naocurtida:'+${conteudos.id_material}" 
+									style="border-radius: 50%; padding: 0px;">
+									<img id="dislike" src="materialize/imagens/dislike.jpg">
+								</button>
+								
+								<!-- <button class="btn btn-warning" type="submit" name="opcao" th:value="'alterar:'+${conteudos.id_material}" style="margin: auto 0px auto 500px;">Alterar</button> -->
+								<button class="btn btn-danger" type="submit" name="curtidas" th:value="'deletar:'+${conteudos.id_material}" style="margin: auto 0px auto 510px;">Deletar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<hr>
+	</div>
+
+	<footer class="rodape">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="row">
+					<select id="locales">
+						<option value="">SELECIONE</option>
+						<option value="en">English</option>
+						<option value="pt">Português</option>
+					</select>
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+					<script type="text/javascript">
+						$(document).ready(function (){
+							$('#locales').change (function(){
+								var selectedOption = $('#locales').val();
+								if (selectedOption != ''){
+									window.location.replace ('index?lang=' + selectedOption);
+								}
+							});
+						});
+					</script>
+				</div>
+				<br>
+				<div class="row">
+					<h5>ENTRE EM CONTATO COM NOSCO</h5>
+				</div>
+				<br>
+				<div class="row">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#"><img style="border:2px solid #000;padding: 5px; width:50px; height:50px;" src="materialize/imagens/midias/facebook.png"></a> 
+					&nbsp;
+					<a href="#"><img style="border:2px solid #000;padding: 5px; width:50px; height:50px;" src="materialize/imagens/midias/instagram.png"></a>
+					&nbsp;
+					<a href="#"><img style="border:2px solid #000;padding: 5px; width:50px; height:50px;" src="materialize/imagens/midias/twitter.png"></a>
+					&nbsp;
+					<a href="#"><img style="border:2px solid #000;padding: 5px; width:50px; height:50px;" src="materialize/imagens/midias/google.png"></a>
+					&nbsp;
+					<a href="#"><img style="border:2px solid #000;padding: 5px; width:50px; height:50px;" src="materialize/imagens/midias/youtube.png"></a>
+				</div>
+			</div>
+			<div class="col-md-5">
+				<div class="row">
+					<p class="pRodape">© Copyright 2000-2019</p>
+				</div>
+				<div class="row">
+					<p class="pRodape">PROJETO INTEGRADO | CCP - MÓDULO 3A USJT</p>
+				</div>
+				<div class="row">
+					<p class="pRodape">Media Center</p>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<img src="materialize/imagens/USJT.png" alt="">
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

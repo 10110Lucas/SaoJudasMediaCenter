@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		<!-- Bootstrap -->
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+		<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	  	
+		<link href="../materialize/style/style.css" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../materialize/js/nicEditorIcons.gif" rel="stylesheet">
+		
+		
+		<script type="text/javascript" src="../materialize/js/nicEdit.js"></script>
+		
+		<!-- imports e imagens -->
+		<link rel="shortcut icon" href="../materialize/imagens/USJT.png" type="image/x-icon">
+		<title>Projeto Integrado</title>
+	</head>
+	
+	<body>
+		<div class="divMenu row">
+			<div class="col-md-1">
+				<img src="../materialize/imagens/USJT.png">
+			</div>
+			<div class="col-md-9">
+				<div class="menuDropdown">
+					<div class="menuDrop" style="top: -7px;">
+						<a href="../adm/confeccao" id="linkMenu">Confecção</a>
+						<a href="../adm/inicial" id="linkMenu">Live</a>
+						<a href="../adm/upload" id="linkMenu">Uploads</a>
+						<a href="../adm/opcoes" id="linkMenu">Opções</a>
+						<a href="../adm/usuarios" id="linkMenu">Usuarios</a>
+						<a href="../adm/estagiario" id="linkMenu">Novo Usuario</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<form name="sair" th:action="@{/logof}" method="post">
+					<div class="divAtendimento">
+						<a href="/inicial" id="linkEntrar" th:text="${usuario.nome}"></a>
+						 | 
+						<a href="javascript:sair.submit()" id="linkEntrar" th:text="#{Sair}"></a>
+					</div>
+				</form>
+				<div class="divPesquisar">
+					<img src="../materialize/imagens/search.png" id="imgBuscar"> 
+					<input type="text" id="txtBuscar" placeholder="Buscar...">
+					<button type="button" name="button" id="btnBuscar">Buscar</button>
+				</div>
+			</div>	
+		</div>
+		
+		<h1>Lista de Usuarios:</h1>
+		<div class="container">
+		
+			<div class="divNoticia" th:each="usuarios : ${usuarios}">
+			
+				<form class="form" th:action="@{/adm/userslistados}" method="post">
+					<div class="row">
+						<div class="col-md-1">
+							<img id="icone2" src="../materialize/imagens/user.png">
+						</div>
+						<div class="col-md-9" style="margin: auto;">
+							<a href="#" id="userInLista">
+								<span style="font-size: 20px;" th:text="${usuarios.id_Usuario}"></span>
+								<span style="font-size: 20px;" th:text="${usuarios.nome}"></span>
+								<span style="font-size: 20px;" th:text="${usuarios.sobrenome}"></span>
+								<span style="font-size: 20px;" th:text="${usuarios.sexo}"></span>
+								<span style="font-size: 20px;" th:text="${usuarios.login}"></span>
+								<span style="font-size: 20px;" th:text="${usuarios.senha}"></span>
+								<span style="font-size: 20px;" th:text="${usuarios.data_nascimento}"></span>
+								<span style="font-size: 20px;" th:text="${usuarios.tipo}"></span>
+							</a>
+						</div>
+						<div class="col-md-2" style="margin: auto;">
+							<button class="btn btn-outline-warning" type="submit" name="opcao" th:value="'alterar:'+${usuarios.id_Usuario}" style="margin: auto 0px auto -20px;">Alterar</button>
+							<button class="btn btn-outline-danger" type="submit" name="opcao" th:value="'deletar:'+${usuarios.id_Usuario}" style="margin: auto 0px auto 0px;">Deletar</button>
+						</div>
+					</div>
+				</form>
+				
+			</div>
+		</div>
+		<!-- ---------- RODAPE --------------------- RODAPE --------------------- RODAPE --------------------- RODAPE ---------- -->
+		<footer class="rodape">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<h5>ENTRE EM CONTATO COM NOSCO</h5>
+						<img src="../materialize/imagens/midias/facebook.png"> <img
+							src="../materialize/imagens/midias/instagram.png"> <img
+							src="../materialize/imagens/midias/twitter.png"> <img
+							src="../materialize/imagens/midias/google.png"> <img
+							src="../materialize/imagens/midias/youtube.png">
+					</div>
+
+					<div class="col-md-6">
+						<div class="row">
+							<p class="pRodape">© Copyright 2000-2019</p>
+						</div>
+						<div class="row">
+							<p class="pRodape">PROJETO INTEGRADO | CCP - MÓDULO 3A USJT</p>
+						</div>
+						<div class="row">
+							<p class="pRodape">Media Center</p>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<img src="../materialize/imagens/USJT.png" alt="">
+					</div>
+
+				</div>
+
+			</div>
+		</footer>
+	</body>
+</html>

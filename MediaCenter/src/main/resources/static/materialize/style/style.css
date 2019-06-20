@@ -1,0 +1,647 @@
+/***************************** TAGs E TEXTOS *****************************/
+body {
+	overflow-x: hidden;
+}
+
+h1 {
+	margin: 30px;
+	color: #8c0853;
+	font-weight: bold;
+}
+
+h5 {
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+label {
+	font-size: 15px;
+	font-weight: bold;
+	color: #8c0853;
+}
+
+span {
+	font-size: 15px;
+	font-weight: bold;
+	color: #8c0853;
+}
+
+.pRodape {
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: left;
+}
+
+/***************************** MENU *****************************/
+.divMenu {
+	background-color: #FFF;
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 90px;
+	width: 100%;
+	padding: 20px;
+	z-index: 5;
+}
+
+.menuDrop {
+	position: absolute;
+	top: -25px;
+	left: 120px;
+	margin: 10px;
+	padding: 10px;
+}
+
+button {
+	cursor: pointer;
+}
+
+#linkMenu {
+	font-weight: bold;
+	color: #09295e;
+	padding: 15px;
+	font-size: 20px;
+	border: none;
+	background: transparent;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none
+}
+
+#linkMenu:hover {
+	font-weight: bold;
+	color: #8c0853;
+	padding: 15px;
+	font-size: 20px;
+	text-decoration: none;
+}
+
+#linkEntrar {
+	font-weight: bold;
+	color: #09295e;
+	padding: 15px;
+	font-size: 14px;
+}
+
+#linkEntrar:hover {
+	font-weight: bold;
+	color: #8c0853;
+	padding: 15px;
+	font-size: 14px;
+	text-decoration: blink;
+}
+
+/* Buscar */
+.divPesquisar {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	position: relative;
+	left: 955px;
+	top: -70px;
+	height: 50px;
+	width: 300px;
+}
+
+#imgBuscar {
+	position: relative;
+	top: 0px;
+	left: 5px;
+}
+
+#txtBuscar {
+	background-color: transparent;
+	padding: 0px 5px 0px 5px;
+	font-size: 19px;
+	border: none;
+	height: 45px;
+	width: 185px;
+	position: relative;
+	top: 0px;
+}
+
+#btnBuscar {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #000;
+	font-weight: bold;
+	background-color: #8c0853;
+	color: #FFFFFF;
+	position: relative;
+	top: -43px;
+	left: 210px;
+	width: 85px;
+	height: 42px;
+}
+
+.divAtendimento {
+	position: relative;
+	top: -70px;
+	left: 1040px;
+	width: 300px;
+	height: 30px;
+}
+
+/***************************** NOTICIAS *****************************/
+.divNoticia {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #8c0853;
+	width: 100%;
+	margin: 20px;
+}
+
+#icone {
+	border-radius: 50px;
+	width: 60px;
+	height: 60px;
+	position: relative;
+	margin: 30px 10px 0px 30px;
+}
+
+#icone2 {
+	border-radius: 50px;
+	width: 60px;
+	height: 60px;
+	position: relative;
+	margin: 10px;
+	padding:0px;
+}
+
+#userInLista {
+	position: relative;
+	margin: auto 0px;
+}
+
+#titulo {
+	color: #8c0853;
+	font-size: 28px;
+	font-weight: bold;
+	position: relative;
+	margin: 40px 0px 0px 10px;
+}
+
+#descricao {
+	margin: -15px 200px 40px 150px;
+	font-size: 16px;
+}
+
+.imgNoticias {
+	width: 900px;
+	height: 500px;
+	position: relative;
+	top: -25px;
+	left: 100px;
+}
+
+/* #descricao{
+  color: #09295e;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px;
+}
+
+.descricao{
+  width: 100%;
+  position: relative;
+  top: -210px;
+  margin: 20px;
+} */
+.titulo {
+	width: 100%;
+	position: relative;
+	top: 0px;
+	margin: 20px;
+}
+
+.like {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	top: -10px;
+	left: 85px;
+}
+
+#linlLike {
+	font-weight: bold;
+	font-size: 18px;
+	color: #09295e;
+	padding: 0px 15px 0px 15px;
+}
+
+#like, #dislike {
+	width: 70px;
+	height: 50px;
+}
+
+#linlLike:hover {
+	font-weight: bold;
+	font-size: 18px;
+	text-decoration: blink;
+	color: #8c0853;
+	padding: 0px 15px 0px 15px;
+}
+
+/***************************** NOTICIA PRINCIPAIS *****************************/
+.divNoticiaPrincial {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #8c0853;
+	width: 100%;
+	margin: 20px;
+}
+
+#descricaoNoticia {
+	color: #09295e;
+	font-size: 18px;
+	margin: 20px;
+}
+
+/***************************** ENTRAR *****************************/
+.divEntrar {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 500px;
+	padding: 40px;
+	margin: 50px;
+}
+
+.divEntrarItern {
+	height: 200px;
+	width: 50%;
+	position: relative;
+	top: 75px;
+	left: 25%;
+}
+
+#inputLogin {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 30px;
+	width: 390px;
+	font-size: 19px;
+	margin: 10px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+#inputSenha, #inputSenhaConfirmacao {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 30px;
+	width: 250px;
+	font-size: 19px;
+	margin: 10px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+#btnEntrar {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	font-weight: bold;
+	background-color: #8c0853;
+	color: #FFFFFF;
+	width: 80px;
+	height: 42px;
+	margin: 10px;
+}
+
+/***************************** ASSINE JÃ� *****************************/
+#inputNome {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 30px;
+	width: 250px;
+	font-size: 19px;
+	margin: 10px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+#inputSobrenome {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 30px;
+	width: 300px;
+	font-size: 19px;
+	margin: 10px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+#inputDratas {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 32px;
+	width: 150px;
+	font-size: 19px;
+	margin: 10px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+#selectNoticia {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	width: 120px;
+	height: 32px;
+	font-size: 15px;
+	margin: 10px;
+	padding: 5px;
+}
+
+#emails, #emails_again {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 30px;
+	width: 390px;
+	font-size: 19px;
+	margin: 10px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+#btnAssinar {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #000;
+	font-weight: bold;
+	background-color: #8c0853;
+	color: #FFFFFF;
+	margin: 10px;
+	position: relative;
+}
+
+#btnCancelar {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #000;
+	font-weight: bold;
+	background-color: #ff0000;
+	color: #FFFFFF;
+	margin: 10px;
+	position: relative;
+}
+
+/***************************** OPCAO *****************************/
+.divOpcao {
+	height: 500px;
+	width: 100%;
+	padding: 20px;
+	margin: 50px;
+}
+
+#btnUpload {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	font-weight: bold;
+	background-color: #8c0853;
+	color: #FFFFFF;
+	height: 42px;
+	width: 285px;
+	position: relative;
+	top: 140px;
+	left: 350px;
+}
+
+#btnConfecsionar {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	font-weight: bold;
+	background-color: #8c0853;
+	color: #FFFFFF;
+	height: 42px;
+	width: 285px;
+	position: relative;
+	top: 160px;
+	left: 350px;
+}
+
+/***************************** UPLOAD *****************************/
+.divUpload {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 100%;
+	width: 100%;
+	padding: 50px 20px 20px 50px;
+	margin: 50px;
+}
+
+#spanUpload {
+	font-size: 15px;
+	font-weight: bold;
+	color: #8c0853;
+	margin: 10px;
+}
+
+#inputAdicionar {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	font-weight: bold;
+	width: 180px;
+	height: 42px;
+	margin: 10px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+#btnUploadArq {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	font-weight: bold;
+	background-color: #8c0853;
+	color: #FFFFFF;
+	width: 180px;
+	height: 42px;
+	margin: 10px;
+}
+
+#btnEnviarArq {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #000;
+	font-weight: bold;
+	background-color: #8c0853;
+	color: #FFFFFF;
+	width: 180px;
+	height: 42px;
+	margin: 10px;
+}
+
+#selectUpload {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 32px;
+	width: 130px;
+	font-size: 15px;
+	margin: 10px;
+}
+
+#inputAdicionar {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 30px;
+	width: 390px;
+	font-size: 19px;
+	margin: 10px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+/***************************** CONFECCAO *****************************/
+.divConfeccao {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 1900px;
+	width: 100%;
+	padding: 20px;
+	margin: 50px;
+}
+
+.divImagem {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 350px;
+	width: 350px;
+	font-size: 19px;
+	margin: 10px;
+}
+
+.divImagem1 {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 350px;
+	width: 350px;
+	font-size: 19px;
+	margin: 10px;
+}
+
+.divVideo {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 350px;
+	width: 350px;
+	font-size: 19px;
+	margin: 10px;
+}
+
+.divVideo1 {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 350px;
+	width: 350px;
+	font-size: 19px;
+	margin: 10px;
+}
+
+.divTexto {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 350px;
+	width: 350px;
+	font-size: 19px;
+	margin: 10px;
+}
+
+.divTexto {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 350px;
+	width: 350px;
+	font-size: 19px;
+	margin: 15px;
+}
+
+.divTexto1 {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	heigaht: 350px;
+	width: 350px;
+	font-size: 19px;
+	margin: 15px;
+}
+
+.divConteudo {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 850px;
+	width: 730px;
+	font-size: 19px;
+	margin: 15px;
+}
+
+#inputTitulo {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 50px;
+	width: 730px;
+	font-size: 19px;
+	margin: 15px;
+	position: relative;
+	top: 10px;
+	right: 30px;
+}
+
+#inputDescricao {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 50px;
+	width: 720px;
+	font-size: 19px;
+	margin: 15px;
+	position: relative;
+	top: 10px;
+	right: 50px;
+}
+
+#selectConfeccao {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	height: 32px;
+	width: 250px;
+	font-size: 15px;
+	margin: 10px;
+	position: relative;
+	top: 25px;
+	right: 80px;
+}
+
+#btnConfeccao {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	font-weight: bold;
+	background-color: #8c0853;
+	color: #FFFFFF;
+	width: 80px;
+	height: 42px;
+	margin: 10px;
+	position: relative;
+	top: 35px;
+	left: 15px;
+}
+
+/***************************** RODAPE *****************************/
+.rodape {
+	border-radius: 20px 0px 20px 0px;
+	border: 2px solid #09295e;
+	background: #4c034c;
+	height: 250px;
+	width: 100%;
+	padding: 20px;
+}
+
+/************************ Timeline tipo revista *****************/
+#revista {
+	background-color: rgb(000, 000, 000, 0.2);
+	position: relative;
+	height: 700px;
+	top: 0px;
+	z-index: 0;
+}
+
+#testeDeslike {
+	font-weight: bold;
+	color: #09295e;
+	padding: 15px;
+	font-size: 20px;
+	width: 55px;
+	height: 40px;
+	border: none;
+	background: transparent;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}

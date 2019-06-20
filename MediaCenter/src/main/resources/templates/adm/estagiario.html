@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+				
+		<!-- Bootstrap -->
+		<link type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+		<link type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+		<link type="text/css" rel="stylesheet" href="http://jqueryvalidation.org/files/demo/site-demos.css">
+		
+		<link href="../materialize/style/style.css" rel="stylesheet" type="text/css">
+		
+		<!-- imports e imagens -->
+		<link rel="shortcut icon" href="../materialize/imagens/USJT.png" type="image/x-icon">
+		<title>Projeto Integrado</title>
+	</head>
+
+	<body>
+		<div class="divMenu row">
+			<div class="col-md-1">
+				<img src="../materialize/imagens/USJT.png">
+			</div>
+			<div class="col-md-9">
+				<div class="menuDropdown">
+					<div class="menuDrop" style="top: -7px;">
+						<a href="../adm/confeccao" id="linkMenu">Confecção</a>
+						<a href="../adm/inicial" id="linkMenu">Live</a>
+						<a href="../adm/upload" id="linkMenu">Uploads</a>
+						<a href="../adm/opcoes" id="linkMenu">Opções</a>
+						<a href="../adm/usuarios" id="linkMenu">Usuarios</a>
+						<a href="../adm/estagiario" id="linkMenu">Novo Usuario</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="divAtendimento">
+			</div>
+				<div class="divPesquisar">
+					<img src="../materialize/imagens/search.png" id="imgBuscar"> 
+					<input type="text" id="txtBuscar" placeholder="Buscar...">
+					<button type="button" name="button" id="btnBuscar" style="margin-top: -10px;">Buscar</button>
+				</div>
+			</div>
+		</div>
+	
+		<div class="container">
+			<form id="myform" class="form" method="post" th:object="${usuario}" th:action="@{/usuario/cadastrado}">
+				<div class="divEntrar">
+					<div class="row">
+						<div class="col-md-6">
+							<label for="inputNome">Nome:</label> 
+							<br> 
+							<input type="text" id="inputNome" required th:field="*{nome}" /> 
+							<br> 
+							<label for="inputSobrenome">Sobrenome:</label>
+							<br> 
+							<input type="text" id="inputSobrenome" required th:field="*{sobrenome}" /> 
+							<br>
+							<label for="inputDratas">Data de Nascimento:</label> 
+							<br> 
+							<input type="text" id="inputDratas" th:field="*{data_nascimento}" />
+							<br>
+							<br>
+							<label>Sexo:</label>
+							<br>
+							<input type="radio" name="sexo" value="F" th:field="*{sexo}" /> 
+							<span>Feminino</span>
+							&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="sexo" value="M" th:field="*{sexo}" />
+							<span>Masculino</span>
+							<br><br>
+						</div>
+						<div class="col-md-6">
+							<label for="emails">Email:</label>
+							<br> 
+							<input type="email" id="emails" required th:field="*{login}" name="email" />
+							<br> 
+							<label for="emails_again">Confirma Email:</label>
+							<br> 
+							<input type="email" id="emails_again" required name="email_again" />
+							<br>
+	
+							<label for="inputSenha">Senha:</label>
+							<br> 
+							<input type="password" id="inputSenha" required th:field="*{senha}" name="password" />
+							<br> 
+							<label for="inputSenhaConfirmacao">Confirma Senha:</label>
+							<br> 
+							<input type="password" id="inputSenhaConfirmacao" required name="password_again" />
+							<br>
+						</div>
+					</div>
+					<div class="row">
+						<br>
+						<br>
+						<div class="col-md-6">
+							<span style="font-size: 25px;">Tipo de Usuario:</span>
+							<select class="select"  th:field="*{tipo}" name="tipo" required id="selectNoticia" 
+										style="margin: 15px 0px 10px 15px;width:200px;padding: 5px 5px 1px 5px;">
+								<option style="background-color:#09295e;color:white;font-weight: bold;" value="">Selecione</option>
+								<option style="background-color:#09295e;color:white;font-weight: bold;" value="Administrador">administrador</option>
+								<option style="background-color:#09295e;color:white;font-weight: bold;" value="Estagiario">estagiario</option>
+							</select>
+						</div>
+						<div class="col-md-6">						
+							<button type="submit" name="button" id="btnAssinar" style="width:180px;  height:42px;">ASSINAR</button>
+							<a href="/adm/inicial"><button type="button" id="btnCancelar" style="width:180px;  height:42px;">CANCELAR</button></a>
+						</div>
+					</div>
+					<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+					<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+					<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+					<script>
+						$( "#myform" ).validate({
+						  rules: {
+						    password: "#inputSenha",
+						    password_again: {
+						      equalTo: "#inputSenha"
+						    },
+						    email: "#emails",
+						    email_again: {
+						      equalTo: "#emails"
+						    }
+						  }
+						});
+						$(function(){
+						   $('#btnAssinar').bind('click',checkRadio);
+						});
+						function checkRadio() {
+						   var isChecked = $("input[type='radio']:checked").val();
+						   var booleanVlaueIsChecked = false;
+						   if (!isChecked) {
+						       booleanVlaueIsChecked = true;
+						       alert('Selecione um gênero');
+						       return false;
+						   }else {
+						       $('#myform').submit();
+						   }
+						}
+					</script>
+				</div>
+			</form>
+		</div>
+		<!-- --------- RODAPE ------------- RODAPE --------------- RODAPE -------------- -->
+		<footer class="rodape">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<h5>ENTRE EM CONTATO COM NOSCO</h5>
+						<img src="../materialize/imagens/midias/facebook.png"> <img
+							src="../materialize/imagens/midias/instagram.png"> <img
+							src="../materialize/imagens/midias/twitter.png"> <img
+							src="../materialize/imagens/midias/google.png"> <img
+							src="../materialize/imagens/midias/youtube.png">
+					</div>
+
+					<div class="col-md-6">
+						<div class="row">
+							<p class="pRodape">© Copyright 2000-2019</p>
+						</div>
+						<div class="row">
+							<p class="pRodape">PROJETO INTEGRADO | CCP - MÓDULO 3A USJT</p>
+						</div>
+						<div class="row">
+							<p class="pRodape">Media Center</p>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<img src="../materialize/imagens/USJT.png" alt="">
+					</div>
+
+				</div>
+
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,126 @@
+<html>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+    <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		<!-- Meterialize funcionar -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+		<link type="text/css" rel="stylesheet" href="materialize/css/materialize.css"  media="screen,projection"/>
+		
+		<!-- Bootstrap -->
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+		<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+		<link rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+			crossorigin="anonymous">
+		
+		<link href="materialize/style/style.css" rel="stylesheet">
+		
+		<!-- imports e imagens -->
+		<link rel="shortcut icon" href="materialize/imagens/USJT.png" type="image/x-icon">
+		<title>Projeto Integrado</title>
+  </head>
+
+  <body>
+
+	<div class="divMenu row">
+		<div class="col-md-1">
+			<img src="materialize/imagens/USJT.png">
+		</div>
+
+		<div class="col-md-9">
+			<div class="menuDropdown">
+
+				<div class="menuDrop" style="top: -7px;">
+					<a href="/confeccao" id="linkMenu">Menu</a> <a href="/inicial"
+						id="linkMenu">Inicio</a> <a href="/noticia" id="linkMenu">Conteudos</a>
+					<a href="/upload" id="linkMenu">Uploads</a> <a href="/opcoes"
+						id="linkMenu">Configuração</a>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="col-md-3">
+				<div class="divAtendimento">
+				<a href="/inicial" id="linkEntrar" th:text="${usuario.nome}"></a>
+				 |
+				<a href="/index" id="linkEntrar">Sair</a>
+				</div>
+				<div class="divPesquisar">
+					<img src="materialize/imagens/search.png" id="imgBuscar"> 
+					<input type="text" id="txtBuscar" placeholder="Buscar...">
+					<button type="button" name="button" id="btnBuscar" style="margin-top: -8px;">Buscar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<h1>PRINCIPAIS NOTÍCIAS DO DIA</h1>
+
+    <div class="container">
+
+      <div class="divNoticiaPrincial">
+        <div class="row">
+            <p id="titulo">
+              <!-- Titulo da noticia -->
+            </p>
+        </div>
+        <div class="row">
+          <div class="imgNoticias">
+            <!-- Imagen da noticia -->
+            <img src="" alt="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="descricao">
+              <p id="descricaoNoticia">
+
+                <!-- Conteudo da Naticia -->
+              </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <footer class="rodape">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h5>ENTRE EM CONTATO COM NOSCO</h5>
+            <img src="materialize/imagens/midias/facebook.png">
+            <img src="materialize/imagens/midias/instagram.png">
+            <img src="materialize/imagens/midias/twitter.png">
+            <img src="materialize/imagens/midias/google.png">
+            <img src="materialize/imagens/midias/youtube.png">
+          </div>
+
+          <div class="col-md-6">
+            <div class="row">
+              <p class="pRodape">© Copyright 2000-2019</p>
+            </div>
+            <div class="row">
+              <p class="pRodape">PROJETO INTEGRADO | CCP - MÓDULO 3A USJT</p>
+            </div>
+            <div class="row">
+              <p class="pRodape">Media Center</p>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <img src="materialize/imagens/USJT.png" alt="">
+          </div>
+
+        </div>
+
+      </div>
+    </footer>
+
+  </body>
+</html>

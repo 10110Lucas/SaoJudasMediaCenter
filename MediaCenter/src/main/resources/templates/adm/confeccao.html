@@ -1,0 +1,140 @@
+<html>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+    <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		<!-- Meterialize funcionar -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css" media="screen,projection" />
+		<link type="text/css" rel="stylesheet" href="../materialize/css/materialize.css"  media="screen,projection"/>
+		
+		<!-- Bootstrap -->
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+		<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		
+		<link href="../materialize/style/style.css" rel="stylesheet">
+		
+		<!-- imports e imagens -->
+		<link rel="shortcut icon" href="../materialize/imagens/USJT.png" type="image/x-icon">
+		<title>Projeto Integrado</title>
+  </head>
+
+  <body>
+	<div class="divMenu row">
+		<div class="col-md-1">
+			<img src="../materialize/imagens/USJT.png">
+		</div>
+		<div class="col-md-9">
+			<div class="menuDropdown">
+				<div class="menuDrop" style="top: -7px;">
+					<a href="../adm/confeccao" id="linkMenu">Confecção</a>
+					<a href="../adm/inicial" id="linkMenu">Live</a>
+					<a href="../adm/upload" id="linkMenu">Uploads</a>
+					<a href="../adm/opcoes" id="linkMenu">Opções</a>
+					<a href="../adm/usuarios" id="linkMenu">Usuarios</a>
+					<a href="../adm/estagiario" id="linkMenu">Novo Usuario</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="col-md-3">
+				<form name="sair" th:action="@{/logof}" method="post">
+					<div class="divAtendimento">
+						<a href="/inicial" id="linkEntrar" th:text="${usuario.nome}"></a>
+						 | 
+						<a href="javascript:sair.submit()" id="linkEntrar" th:text="#{Sair}"></a>
+					</div>
+				</form>
+				<div class="divPesquisar">
+					<img src="../materialize/imagens/search.png" id="imgBuscar"> 
+					<input type="text" id="txtBuscar" placeholder="Buscar...">
+					<button type="button" name="button" id="btnBuscar" style="margin-top: -8px;">Buscar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+		<div class="container">
+
+			<div class="">
+				<div class="row">
+					<h3>Colecao de Arquivo</h3>
+				</div>
+				<div class="row">
+					<label for="">Figuras:</label>
+				</div>
+				<div class="row">
+					<div class="divImagem">
+						<img src="" alt="">
+					</div>
+					<div class="divImagem1">
+						<img src="" alt="">
+					</div>
+				</div>
+
+				<div class="row">
+					<label for="">Video:</label>
+				</div>
+				<div class="row">
+					<div class="divVideo">
+						<img src="" alt="">
+					</div>
+					<div class="divVideo1">
+						<img src="" alt="">
+					</div>
+				</div>
+
+				<div class="row">
+					<label for="">Texto:</label>
+				</div>
+				<div class="row">
+					<div class="divTexto">
+						<p></p>
+					</div>
+					<div class="divTexto1">
+						<p></p>
+					</div>
+				</div>
+
+				<div class="row">
+					<span>Apresntação do Conteudo:</span>
+						<div class="divConteudo"></div>
+				</div>
+
+				<div class="row">
+					<span>Título:</span>
+					<div class="row">
+						<input type="text" name="" value="" id="inputTitulo">
+					</div>
+				</div>
+
+				<div class="row">
+					<label for="">Descrição:</label>
+					<div class="row">
+						<input type="text" name="" value="" id="inputDescricao">
+					</div>
+				</div>
+
+				<div class="row">
+					<label for="">Tipo de Acesso:</label><br>
+					<div class="row">
+						<select class="" name="" id="selectConfeccao">
+							<option value="">Material livre ao público</option>
+							<option value="">Livre acesso mediante cadastro</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<button type="button" name="button" id="btnConfeccao">OK</button>
+				</div>
+
+			</div>
+
+		</div>
+</body>
+</html>

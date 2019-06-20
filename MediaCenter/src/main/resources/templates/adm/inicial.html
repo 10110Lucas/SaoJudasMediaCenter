@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		<!-- Meterialize funcionar -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css" media="screen,projection" />
+		<link type="text/css" rel="stylesheet" href="../materialize/css/materialize.css" media="screen,projection" />
+		
+		<!-- Bootstrap -->
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+		<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		
+		<!-- Include external CSS. -->
+	  	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+	
+	  	<!-- Include Editor style. -->
+	  	<link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.5/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+	  	<link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.5/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+	  	
+		<link href="../materialize/style/style.css" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../materialize/js/nicEditorIcons.gif" rel="stylesheet">
+		
+		
+		<script type="text/javascript" src="../materialize/js/nicEdit.js"></script>
+		
+		<!-- imports e imagens -->
+		<link rel="shortcut icon" href="../materialize/imagens/USJT.png" type="image/x-icon">
+		<title>Projeto Integrado</title>
+	</head>
+	
+	<body>
+		<div class="divMenu row">
+			<div class="col-md-1">
+				<img src="../materialize/imagens/USJT.png">
+			</div>
+			<div class="col-md-9">
+				<div class="menuDropdown">
+					<div class="menuDrop" style="top: -7px;">
+						<a href="../adm/confeccao" id="linkMenu">Confecção</a>
+						<a href="../adm/inicial" id="linkMenu">Live</a>
+						<a href="../adm/upload" id="linkMenu">Uploads</a>
+						<a href="../adm/opcoes" id="linkMenu">Opções</a>
+						<a href="../adm/usuarios" id="linkMenu">Usuarios</a>
+						<a href="../adm/estagiario" id="linkMenu">Novo Usuario</a>
+					</div>
+				</div>
+			</div>
+	
+			<div class="col-md-3">
+				<form name="sair" th:action="@{/logof}" method="post">
+					<div class="divAtendimento">
+						<a href="/inicial" id="linkEntrar" th:text="${usuario.nome}"></a>
+						 | 
+						<a href="javascript:sair.submit()" id="linkEntrar" th:text="#{Sair}"></a>
+					</div>
+				</form>
+				<div class="divPesquisar">
+					<img src="../materialize/imagens/search.png" id="imgBuscar"> 
+					<input type="text" id="txtBuscar" placeholder="Buscar...">
+					<button type="button" name="button" id="btnBuscar" style="margin-top: -8px;">Buscar</button>
+				</div>
+			</div>
+	
+		</div>
+		
+			<!-- <h1>PRINCIPAIS NOTÍCIAS DO DIA</h1> -->
+
+
+		<div class="container">
+
+			<div class="divNoticia">
+				<form class="form" th:action="@{/upload}" method="post" enctype="multipart/form-data" style="padding: 20px 20px 0px 20px;">
+					<div class="row">
+						<span style="margin: 20px 0px 0px 20px;">Selecionar tag</span>
+					</div>
+					<div class="row">
+						<input type="text" id="inputAdicionar" th:field="${tag.nome}" name="tag" required style="margin: -5px 0px -35px 20px;"/>
+					</div>
+					<br>
+					<div id="sample">
+						<br>
+						<textarea id="txtArea" name="file"></textarea>
+
+						<!-- Include external JS libs. -->
+						<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+						<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+						<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+
+						<!-- Include Editor JS files. -->
+						<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.5/js/froala_editor.pkgd.min.js"></script>
+						
+						<!-- Include the language file. -->
+						<script src='../langs/pt_br.js'></script>
+						<!-- Initialize the editor. -->
+						<script>
+							$(function() {
+								$('#txtArea').froalaEditor()
+							});
+							$('#txtArea').froalaEditor({
+								charCounterCount : false,
+								language: 'pt_br'
+							});
+						</script>
+					</div>
+					<div class="row sample">
+						<button class="sampleBotao" type="submit" name="button" id="btnEnviarArq">OK</button>
+					</div>
+					<br>
+					<hr>
+				</form>
+			</div>
+
+		</div>
+
+		<footer class="rodape">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<h5>ENTRE EM CONTATO COM NOSCO</h5>
+						<img src="../materialize/imagens/midias/facebook.png"> <img
+							src="../materialize/imagens/midias/instagram.png"> <img
+							src="../materialize/imagens/midias/twitter.png"> <img
+							src="../materialize/imagens/midias/google.png"> <img
+							src="../materialize/imagens/midias/youtube.png">
+					</div>
+
+					<div class="col-md-6">
+						<div class="row">
+							<p class="pRodape">© Copyright 2000-2019</p>
+						</div>
+						<div class="row">
+							<p class="pRodape">PROJETO INTEGRADO | CCP - MÓDULO 3A USJT</p>
+						</div>
+						<div class="row">
+							<p class="pRodape">Media Center</p>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<img src="../materialize/imagens/USJT.png" alt="">
+					</div>
+
+				</div>
+
+			</div>
+		</footer>
+	</body>
+</html>

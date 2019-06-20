@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+    <head>
+      <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		<!-- Meterialize funcionar -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+		<link type="text/css" rel="stylesheet" href="materialize/css/materialize.css"  media="screen,projection"/>
+		
+		<!-- Bootstrap -->
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+		<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+		<link rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+			crossorigin="anonymous">
+		
+		<link href="materialize/style/style.css" rel="stylesheet">
+		
+		<!-- imports e imagens -->
+		<link rel="shortcut icon" href="materialize/imagens/USJT.png" type="image/x-icon">
+		<title>Projeto Integrado</title>
+    </head>
+
+    <body>
+
+	<div class="divMenu row">
+
+		<div class="col-md-1">
+			<a href="/index">
+				<img src="materialize/imagens/USJT.png" alt="">
+			</a>
+		</div>
+
+		<div class="col-md-9">
+			<div class="menuDropdown">
+				<form action="categoria" method="post">
+					<div class="menuDrop">
+						<input type="submit" name="nomecategoria" id="linkMenu" value="Política"> 
+						<input type="submit" name="nomecategoria" id="linkMenu" value="Economia"> 
+						<input type="submit" name="nomecategoria" id="linkMenu" value="Tecnologia"> 
+						<input type="submit" name="nomecategoria" id="linkMenu" value="Esporte"> 
+						<input type="submit" name="nomecategoria" id="linkMenu" value="Cultura">
+						<input type="submit" name="nomecategoria" id="linkMenu" value="Outros">
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="divAtendimento">
+				<a href="/assineJa" id="linkEntrar">Assine Já</a>
+				 | 
+				<a href="/login" id="linkEntrar">Entrar</a>
+			</div>
+			<div class="divPesquisar">
+				<img src="materialize/imagens/search.png" id="imgBuscar"> 
+				<input type="text" id="txtBuscar" placeholder="Buscar...">
+				<button type="button" name="button" id="btnBuscar" style="margin-top: -8px;">Buscar</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="divEntrar">
+      <div class="container">
+
+			<form class="form" method="post" th:object="${usuario}" th:action="@{/fazerLogin}">
+				<div class="divEntrarItern">
+					<label for="">Login:</label><br> <input required type="text" id="inputLogin" placeholder="Usuário" th:field="*{login}" /><br>
+					<label for="">Senha:</label><br> <input required type="password" id="inputSenha" placeholder="Senha" th:field="*{senha}" /><br>
+					<button type="submit" name="button" id="btnEntrar">Entrar</button>
+				</div>
+			</form>
+
+		</div>
+      </div>
+
+      <footer class="rodape">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3">
+              <h5>ENTRE EM CONTATO COM NOSCO</h5>
+              <img src="materialize/imagens/midias/facebook.png">
+              <img src="materialize/imagens/midias/instagram.png">
+              <img src="materialize/imagens/midias/twitter.png">
+              <img src="materialize/imagens/midias/google.png">
+              <img src="materialize/imagens/midias/youtube.png">
+            </div>
+
+            <div class="col-md-6">
+              <div class="row">
+                <p class="pRodape">© Copyright 2000-2019</p>
+              </div>
+              <div class="row">
+                <p class="pRodape">PROJETO INTEGRADO | CCP - MÓDULO 3A USJT</p>
+              </div>
+              <div class="row">
+                <p class="pRodape">Media Center</p>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <img src="materialize/imagens/USJT.png" alt="">
+            </div>
+
+          </div>
+
+        </div>
+      </footer>
+
+    </body>
+  </html>

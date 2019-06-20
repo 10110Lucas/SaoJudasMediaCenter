@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<!-- Include external CSS. -->
+  	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+	
+  	<!-- Include Editor style. -->
+  	<link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.5/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+  	<link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.5/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+	
+	<!-- Bootstrap -->
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	
+	<link href="materialize/style/style.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="materialize/js/nicEditorIcons.gif" rel="stylesheet">
+	
+	
+	<script type="text/javascript" src="materialize/js/nicEdit.js"></script>
+	
+	<!-- imports e imagens -->
+	<link rel="shortcut icon" href="materialize/imagens/USJT.png" type="image/x-icon">
+	<title>Projeto Integrado</title>
+</head>
+
+<body>
+
+	<div class="divMenu row">
+		<div class="col-md-1">
+			<img src="materialize/imagens/USJT.png">
+		</div>
+		<div class="col-md-9">
+			<div class="menuDropdown">
+				<div class="menuDrop" style="top: -7px;">
+					<a href="/confeccao" id="linkMenu">Confecção</a>
+					<a href="/inicial" id="linkMenu">Live</a> 
+					<a href="/upload" id="linkMenu">Uploads</a>
+					<a href="/opcoes" id="linkMenu">Opções</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<form name="sair" th:action="@{/logof}" method="post">
+				<div class="divAtendimento">
+					<a href="/inicial" id="linkEntrar" th:text="${usuario.nome}"></a>
+					 | 
+					<a href="javascript:sair.submit()" id="linkEntrar" th:text="#{Sair}"></a>
+				</div>
+			</form>
+			<div class="divPesquisar">
+				<img src="materialize/imagens/search.png" id="imgBuscar"> 
+				<input type="text" id="txtBuscar" placeholder="Buscar...">
+				<button type="button" name="button" id="btnBuscar">Buscar</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+			<div class="divUpload">
+				<form class="form" th:action="@{/upload}" method="post" enctype="multipart/form-data">
+					<span style="margin: -10px 100px 15px -15px;">Escolher arquivo</span>
+					
+					<div class="row">
+						<input id="uploader" type="file" name="file" onchange="preview(this.file)"/>
+					</div>
+					
+					<div class="row" style="margin-top: 30px;">
+					
+						<div class="col-md-6">
+							<div class="row">
+								<span>Selecionar tag</span>
+								<select class="select"  th:field="${tag.nome}" name="tag" required id="selectNoticia" style="margin: -5px 0px 10px 15px;width:200px;">
+									<option style="background-color:#09295e;color:white;font-weight: bold;" value="">Selecione</option>
+									<option style="background-color:#09295e;color:white;font-weight: bold;" value="Política">Política</option>
+									<option style="background-color:#09295e;color:white;font-weight: bold;" value="Economia">Economia</option>
+									<option style="background-color:#09295e;color:white;font-weight: bold;" value="Tecnologia">Tecnologia</option>
+									<option style="background-color:#09295e;color:white;font-weight: bold;" value="Esporte">Esporte</option>
+									<option style="background-color:#09295e;color:white;font-weight: bold;" value="Cultura">Cultura</option>
+								</select>
+								<!-- <input type="text" id="inputAdicionar" th:field="${tag.nome}" name="tag" required/> -->
+							</div>
+							
+							<!-- <div class="row"> -->
+								<!-- <textarea style="resize: none;width:420px;height:160px;margin-bottom:-15px;" cols="35" rows="6" id="inputAdicionar" 
+									th:field="${material.descricao}" name="material" required>
+								</textarea> -->
+								
+							<!-- </div> -->
+							
+						</div>
+						<div class="col-md-6" id="arquivinhos">							
+							<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+							<script>
+								function preview(){
+									var teste = $("#arquivinhos");
+									if(teste){
+										console.log(teste.text(""));
+									}
+									var arquivo = document.querySelector('input[name=file]').files[0];
+									var audio = document.querySelector('source[name=aud]');
+									var imagem = null;
+									var video = null;
+									var arquivoSelecionado = false;
+									var reader = new FileReader();
+									
+									if(arquivo){
+										console.log("Testando nome do arquivo: " + arquivo.name);
+										console.log("Testando extensão do arquivo: " + arquivo.name.split(".")[1]);
+										if(arquivo.name.split(".")[1] == "png" || arquivo.name.split(".")[1] == "jpg" || arquivo.name.split(".")[1] == "jpeg"){
+											$('#arquivinhos').append("<img id='fileImg' name='img' style='margin-top: -120px;width: 480px; height: 300px;' />");
+											imagem = document.querySelector('img[name=img]');
+											reader.onloadend = function(){
+												imagem.src = reader.result;
+											}
+											reader.readAsDataURL(arquivo);
+											console.log("arquivo é uma imagem!!! " + arquivo.val());
+										}else if(arquivo.name.split(".")[1] == "mp4"){
+											$('#arquivinhos').append("<video name='vid' style='margin-top: -140px;width: 480px; height: 300px;' controls ></video>");
+											/* $('#arquivinhos').append("<video style='margin-top: -110px;width: 480px; height: 300px;' controls ><source name='vid' type='video/mp4' /></video>"); */
+											video = document.querySelector('video[name=vid]');
+											reader.onloadend = function(){
+												video.src = reader.result;
+											}
+											console.log("arquivo é um video!!!" + arquivo.name);
+											reader.readAsDataURL(arquivo);
+										}else{
+											alert("Selecione um arquivo válido");
+										}
+									}else{
+										alert("Selecione um arquivo");
+									}	
+								}
+							</script>
+						</div>
+					</div>
+					<div class="row">
+						<span style="margin-bottom:20px;margin-top:15px;">Redija um conteudo</span>
+					</div>
+					<div class="row">
+						<div id="sample">
+							<textarea id="txtArea" th:field="${material.descricao}" name="material" style="resize: none"></textarea>
+	
+							<!-- Include external JS libs. -->
+							<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+							<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+							<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+	
+							<!-- Include Editor JS files. -->
+							<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.5/js/froala_editor.pkgd.min.js"></script>
+	
+	
+							<!-- TIRAR CONTADOR DE LETRAS -->
+	
+	
+							<!-- EDIÇÃO JAVASCRIPT. -->
+							
+							<!-- Include the language file. -->
+							<script src='../langs/pt_br.js'></script>
+							<!-- Initialize the editor. -->
+							<script>
+								$(function() {
+									$('#txtArea').froalaEditor()
+								});
+								$('#txtArea').froalaEditor({
+									charCounterCount : false,
+									language: 'pt_br'
+								});
+							</script>
+						</div>
+					</div>
+					<div class="row" style="margin-top:5px;">
+						<button type="submit" name="button" id="btnEnviarArq" style="width:150px;">Enviar</button>
+						<a href="/inicial"><button type="button" id="btnCancelar" style="width:150px;  height:42px;">Cancelar</button></a>
+					</div>
+	
+					<!-- <div class="row">
+						<select class="" name="" id="selectUpload">
+							<option value="">Economia</option>
+							<option value="">Esportes</option>
+							<option value="">Cultura</option>
+							<option value="">Lazer</option>
+							<option value="">Tecnologia</option>
+						</select>
+					</div> -->
+				</form>
+			</div>
+	</div>
+
+	<footer class="rodape">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<h5>ENTRE EM CONTATO COM NOSCO</h5>
+					<img src="materialize/imagens/midias/facebook.png"> <img
+						src="materialize/imagens/midias/instagram.png"> <img
+						src="materialize/imagens/midias/twitter.png"> <img
+						src="materialize/imagens/midias/google.png"> <img
+						src="materialize/imagens/midias/youtube.png">
+				</div>
+
+				<div class="col-md-6">
+					<div class="row">
+						<p class="pRodape">© Copyright 2000-2019</p>
+					</div>
+					<div class="row">
+						<p class="pRodape">PROJETO INTEGRADO | CCP - MÓDULO 3A USJT</p>
+					</div>
+					<div class="row">
+						<p class="pRodape">Media Center</p>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<img src="materialize/imagens/USJT.png" alt="">
+				</div>
+
+			</div>
+
+		</div>
+	</footer>
+
+</body>
+</html>

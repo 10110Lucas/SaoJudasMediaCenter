@@ -1,0 +1,43 @@
+-- Usuário
+-- insert into usuario (id, nome, sobrenome, dataDeNascimento, sexo, conteudo, login, senha, tipo) values (1, 'Diretoria', 'adm', '01/04/1964', 'Masculino', 'Conteudo...', 'admin', 'admin', 'administrador')
+--insert into usuario (id, login, senha, tipo) values (1, 'professor', 'professor', 'administrador')
+--insert into usuario (id, login, senha, tipo) values (2, 'aluno', 'aluno', 'comum')
+--insert into usuario (id_Usuario, dataNascimento, login, nome, senha, sexo, sobrenome, tipo)
+--            values (1, '26/06/1968', 'professor', 'Jose', 'professor', 'M', 'Medeiros Vasconcelos', 'administrador');
+--insert into usuario (id_Usuario, dataNascimento, login, nome, senha, sexo, sobrenome, tipo)
+--            values (2, '12/07/1995', 'aluno', 'Joao', 'aluno', 'M', 'Henrique Augusto', 'estagiario');
+
+
+show databases;
+use media_center_hibernate;
+show tables;
+desc usuario;
+desc conteudo;
+desc arquivos;
+select * from usuario;
+select * from arquivos;
+select * from conteudo;
+
+select c.*, u.* from conteudo c 
+inner join usuario u on u.id_Usuario = c.id_Usuario
+where c.id_Usuario = u.id_Usuario
+order by c.id_Usuario;
+
+insert into usuario (data_nascimento, login, nome, senha, sexo, sobrenome, tipo)
+            values ('26/06/1968', 'professor', 'Jose', 'professor', 'M', 'Medeiros Vasconcelos', 'administrador');
+insert into usuario (data_nascimento, login, nome, senha, sexo, sobrenome, tipo)
+            values ('12/07/1995', 'aluno', 'Joao', 'aluno', 'M', 'Henrique Augusto', 'estagiario');
+insert into usuario (data_nascimento, login, nome, senha, sexo, sobrenome, tipo)
+            values ('05/04/1996', 'aluno1', 'Antonio', 'aluno', 'M', 'Ferreira Silva', 'comum');
+insert into conteudo (conteudo, id_Usuario) values ('Este é o teste numero 5.', 2);
+update usuario set login = 'aluno1' where id_Usuario = 3;
+
+alter table usuario change id_Usuario id_Usuario long primary key not null auto_increment;
+drop database media_center_hibernate;
+drop table arquivos;
+drop table conteudo;
+delete from conteudo where id_conteudo = 6;
+
+SHOW VARIABLES LIKE 'max_allowed_packet';
+set global net_buffer_length=1000000;
+set global max_allowed_packet=1000000000;

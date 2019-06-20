@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Meterialize funcionar -->
+		<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+		<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+		<link type="text/css" rel="stylesheet" href="materialize/css/materialize.css" media="screen,projection" /> -->
+		
+		
+		<!-- Bootstrap -->
+		<link type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+		<link type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" > -->
+		<link type="text/css" rel="stylesheet" href="http://jqueryvalidation.org/files/demo/site-demos.css">
+		
+		<link href="materialize/style/style.css" rel="stylesheet" type="text/css">
+		
+		<!-- imports e imagens -->
+		<link rel="shortcut icon" href="materialize/imagens/USJT.png" type="image/x-icon">
+		<title>Projeto Integrado</title>
+	</head>
+
+	<body>
+
+		<div class="divMenu row">
+			<div class="col-md-1">
+				<a href="/index">
+					<img src="materialize/imagens/USJT.png" alt="">
+				</a>
+			</div>
+			<div class="col-md-9">
+				<div class="menuDropdown">
+					<form action="categoria" method="post">
+						<div class="menuDrop">
+							<input type="submit" name="nomecategoria" id="linkMenu" value="Política">
+							<input type="submit" name="nomecategoria" id="linkMenu" value="Economia">
+							<input type="submit" name="nomecategoria" id="linkMenu" value="Tecnologia">
+							<input type="submit" name="nomecategoria" id="linkMenu" value="Esporte">
+							<input type="submit" name="nomecategoria" id="linkMenu" value="Cultura">
+							<input type="submit" name="nomecategoria" id="linkMenu" value="Outros">
+						</div>
+					</form>
+				</div>
+			</div>
+	
+			<div class="col-md-3">
+				<div class="divAtendimento">
+					<a href="/assineJa" id="linkEntrar">Assine Já</a> | <a href="/login"
+						id="linkEntrar">Entrar</a>
+				</div>
+				<div class="divPesquisar">
+					<img src="materialize/imagens/search.png" id="imgBuscar"> <input
+						type="text" id="txtBuscar" placeholder="Buscar...">
+					<button type="button" name="button" id="btnBuscar" style="margin-top: -16px;">Buscar</button>
+				</div>
+			</div>
+	
+		</div>
+	
+		<div class="container">
+			<form id="myform" class="form" method="post" th:object="${usuario}" th:action="@{/assineJa/cadastroComum}">
+				<div class="divEntrar">
+					<div class="row">
+						<div class="col-md-6">
+	
+							<label for="inputNome">Nome:</label> 
+							<br> 
+							<input type="text" id="inputNome" required th:field="*{nome}" /> 
+							<br> 
+							<label for="inputSobrenome">Sobrenome:</label>
+							<br> 
+							<input type="text" id="inputSobrenome" required th:field="*{sobrenome}" /> 
+							<br>
+							<label for="inputDratas">Data de Nascimento:</label> 
+							<br> 
+							<input type="text" id="inputDratas" th:field="*{data_nascimento}" />
+							<br>
+							<br>
+							<label>Sexo:</label>
+							<br>
+							<input type="radio" name="sexo" value="F" th:field="*{sexo}" /> 
+							<span>Feminino</span>
+							&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="sexo" value="M" th:field="*{sexo}" />
+							<span>Masculino</span>
+							<br><br>
+							<!-- 
+							<label for="Selecao">Qual conteúdo você desejar receber:</label> 
+							<br> 
+							<select class="select" name="Selecao" id="selectNoticia">
+								<option value="Brasil">Brasil</option>
+								<option value="Internacionais">Internacionais</option>
+								<option value="Política">Política</option>
+								<option value="Educação">Educação</option>
+								<option value="Economia">Economia</option>
+								<option value="Entretenimento">Entretenimento</option>
+							</select> -->
+						</div>
+	
+						<div class="col-md-6">
+							<label for="emails">Email:</label>
+							<br> 
+							<input type="email" id="emails" required th:field="*{login}" name="email" />
+							<br> 
+							<label for="emails_again">Confirma Email:</label>
+							<br> 
+							<input type="email" id="emails_again" required name="email_again" />
+							<br>
+	
+							<label for="inputSenha">Senha:</label>
+							<br> 
+							<input type="password" id="inputSenha" required th:field="*{senha}" name="password" />
+							<br> 
+							<label for="inputSenhaConfirmacao">Confirma Senha:</label>
+							<br> 
+							<input type="password" id="inputSenhaConfirmacao" required name="password_again" />
+							<br>
+						</div>
+					</div>
+					<div class="row">
+						<br>
+						<br>
+						<button type="submit" name="button" id="btnAssinar" style="width:180px;  height:42px;">ASSINAR</button>
+						<a href="/index"><button type="button" id="btnCancelar" style="width:180px;  height:42px;">CANCELAR</button></a>
+					</div>
+					<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+					<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+					<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+					<script>
+						// just for the demos, avoids form submit
+						/* jQuery.validator.setDefaults({
+						  debug: true,
+						  success: "valid"
+						}); */
+						
+						$( "#myform" ).validate({
+						  rules: {
+						    password: "#inputSenha",
+						    password_again: {
+						      equalTo: "#inputSenha"
+						    },
+						    email: "#emails",
+						    email_again: {
+						      equalTo: "#emails"
+						    }
+						  }
+						});
+						
+						$(function(){
+						   $('#btnAssinar').bind('click',checkRadio);
+						});
+
+						function checkRadio() {
+						   var isChecked = $("input[type='radio']:checked").val();
+						   var booleanVlaueIsChecked = false;
+						   if (!isChecked) {
+						       booleanVlaueIsChecked = true;
+						       alert('Selecione um gênero');
+						       return false;
+						   }else {
+						       $('#myform').submit();
+						   }
+						}
+					</script>
+				</div>
+			</form>
+		</div>
+	
+		<footer class="rodape">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<h5>ENTRE EM CONTATO COM NOSCO</h5>
+						<img src="materialize/imagens/midias/facebook.png"> 
+						<img src="materialize/imagens/midias/instagram.png"> 
+						<img src="materialize/imagens/midias/twitter.png"> 
+						<img src="materialize/imagens/midias/google.png"> 
+						<img src="materialize/imagens/midias/youtube.png">
+					</div>
+	
+					<div class="col-md-6">
+						<div class="row"> 
+							<p class="pRodape">© Copyright 2000-2019</p>
+						</div>
+						<div class="row">
+							<p class="pRodape">PROJETO INTEGRADO | CCP - MÓDULO 3A USJT</p>
+						</div>
+						<div class="row">
+							<p class="pRodape">Media Center</p>
+						</div>
+					</div>
+	
+					<div class="col-md-3">
+						<img src="materialize/imagens/USJT.png" alt="">
+					</div>
+	
+				</div>
+	
+			</div>
+		</footer>
+
+	</body>
+</html>
